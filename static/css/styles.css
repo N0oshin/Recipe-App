@@ -1,0 +1,79 @@
+/* Body background color */
+body {
+    background-color: #FDFAF6;
+    color:#18230F;  /* Font color */
+    font-family: Arial, sans-serif;  /* You can change the font family here */
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #E5DDC5;  /* Navbar background color */
+    color: #FF2DF1;  /* Font color for navbar */
+}
+
+/* Navbar links */
+.navbar a {
+    color: #18230F;  /* Link color */
+    text-decoration: none;
+    padding: 10px;
+}
+
+.navbar a:hover {
+    color: #B9B28A;  /* Change color on hover */
+
+}
+
+.card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden; /* Ensures images don’t overflow */
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+
+
+.search-container{
+    background-color:#DCF2F1;
+    width: 25vw;
+    max-width: 400px;
+    min-width: 200px; /* Optional: Prevents it from being too small */
+    display: flex; /* Aligns input and button in a row */
+    align-items: center; /* Centers items vertically */
+    border-radius: 25px;
+}
+.search_button{
+    background-color:#BED7DC;
+    border: none;
+    color: #205781;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 8px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.search_button:hover {
+    background-color: #A5C9D1; /* Slightly darker on hover */
+}
+
+.search_input{
+    flex: 1;
+    border: none;
+    padding: 8px 15px;
+    margin: 4px 2px;
+    border-radius: 16px;
+    background-color: transparent;
+    outline:none;
+    border: none;
+    color: #205781;
+}
+
+
+

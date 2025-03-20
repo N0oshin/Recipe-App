@@ -1,0 +1,41 @@
+{% extends 'base_bootstrap.html' %}
+{% load app_tags %}
+{% load app_tags static %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+{% endblock %}
+
+{% block navbar %}
+<nav class=" navbar navbar-expand-lg shadow-sm">
+  <div class="container">
+
+    <a class="navbar-brand" href="{% url 'recipes:all' %}">
+    <img src="{% static 'images/rec_icon.png' %}" alt="Recipe Icon" width="40" height="30"> Recipes
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+        <li class="nav-item d-flex align-items-center">
+          <img class="rounded-circle me-2" style="width: 30px; height: 30px;" src="{{ user|gravatar:60 }}" alt="Profile">
+          <a class="nav-link btn btn-outline-light rounded-pill px-3 py-1" href="{% url 'logout' %}?next={% url 'recipes:all' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-light rounded-pill px-3 py-1" href="{% url 'login' %}?next={% url 'recipes:all' %}">Login</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+

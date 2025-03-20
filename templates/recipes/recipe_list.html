@@ -1,0 +1,49 @@
+{% extends "main.html" %}
+{% block content %}
+<h1>Yummyyy Treats!!!</h1>
+
+{% if user.is_authenticated %}
+    <p>
+        <a href="{% url 'recipes:recipe_create' %}" class="btn btn-outline-dark" style="margin:1.5%">Add Recipe</a>
+    </p>
+{% endif %}
+
+<form method="GET" action="{% url 'recipes:all' %}" class="search-form">
+    <div class="search-container">
+        <input class = "search_input" type="text" name="q" placeholder="Search recipe..." value="{{ query }}">
+        <button type="submit" class="search_button">Search</button>
+    </div>
+</form>
+
+
+
+<p>
+{% if rec_list %}
+<div class="container" style="margin-top:3%;">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    {% for rec in rec_list %}
+    <div class="col">
+      <div class="card">
+        <img src="{% url 'recipes:recipe_picture' rec.id %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ rec.title }}</h5>
+          <a href="{% url 'recipes:recipe_detail' rec.id %}" class="btn btn-outline-secondary">Let's cook</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% else %}
+  <p>Sorry.... No recipes yet!!.</p>
+{% endif %}
+</p>
+
+
+{% endblock %}
+
+
+
+
+
