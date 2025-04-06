@@ -5,22 +5,31 @@
     <p>
     <form action="" method="post" id="upload_form" enctype="multipart/form-data">
         {% csrf_token %}
+
+        <!-- Render all form fields with crispy -->
         {{ form|crispy }}
+
+
+        <br>
         <input type="submit" value="Submit">
-        <input type="submit" value="Cancel" onclick="window.location.href='{% url 'recipes:all' %}';return false;">
+        <input type="button" value="Cancel" onclick="window.location.href='{% url 'recipes:all' %}';return false;">
     </form>
     </p>
 
+    <!-- File size validation script -->
     <script>
-    document.getElementById("upload_form").addEventListener("submit", function() {
+    document.getElementById("upload_form").addEventListener("submit", function(event) {
         console.log('Checking file size');
         if (window.File && window.FileReader && window.FileList && window.Blob) {
-            var file = document.getElementById('id_{{ form.upload_field_name }}').files[0];
-            if (file && file.size > {{ form.max_upload_limit }} ) {
-                alert("File " + file.name + " of type " + file.type + " must be < {{ form.max_upload_limit_text }}");
-                return false;
+            var fileInput = document.getElementById('id_{{ form.upload_field_name }}');
+            if (fileInput && fileInput.files.length > 0) {
+                var file = fileInput.files[0];
+                if (file.size > {{ form.max_upload_limit }}) {
+                    alert("File " + file.name + " must be < {{ form.max_upload_limit_text }}");
+                    event.preventDefault();  // Prevent form submission
+                }
             }
         }
     });
-    </script>
+
 {% endblock %}

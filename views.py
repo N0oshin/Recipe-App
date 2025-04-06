@@ -4,13 +4,10 @@ from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from recipes.owner import OwnerCreateView, OwnerListView, OwnerDetailView, OwnerDeleteView, OwnerUpdateView
-from recipes.models import Recipe, Fav
+from recipes.models import Recipe
 from recipes.forms import CreateForm
-
-# favorites=related_name='favorite_recipes')
-
-# class Fav(models.Model) :
-#     user =related_name='favs_user')
+from taggit.models import Tag, TaggedItem
+from django.contrib.contenttypes.models import ContentType
 
 
 
@@ -33,28 +30,51 @@ class RecipeCreateView(OwnerCreateView):
             return render(request, 'recipes/recipe_form.html' , ctx)
 
         # Add owner to the model before saving
+
         recipe = form.save(commit=False)
         recipe.owner = self.request.user
         recipe.save()
         form.save_m2m()
+
+
         return redirect(self.success_url)
+
 
 
 class RecipeListView(OwnerListView):
     template_name = "recipes/recipe_list.html"
 
     def get(self, request):
-        # search
         query = request.GET.get('q', '')
+        tag_slug = request.GET.get('tag', '')  # We'll pass tag as a GET parameter
+
+        rec_list = Recipe.objects.all()
 
         if query:
-            rec_list = Recipe.objects.filter(title__icontains=query).order_by('-updated_at')[:10]
-        else:
-            rec_list = Recipe.objects.all().order_by('-updated_at')[:10]
+            rec_list = rec_list.filter(title__icontains=query)
+
+        tag = None
+        if tag_slug:
+            tag = get_object_or_404(Tag, slug=tag_slug)
+            rec_list = rec_list.filter(tags__slug=tag_slug)
+
+        rec_list = rec_list.order_by('-updated_at')[:10]
+
+        recipe_type = ContentType.objects.get_for_model(Recipe)
+        tags = Tag.objects.filter(
+            taggit_taggeditem_items__content_type=recipe_type
+        ).distinct()
 
 
-        ctx = {'rec_list' : rec_list, 'query' : query}
-        return render(request, self.template_name, ctx)
+        context = {
+            'rec_list': rec_list,
+            'query': query,
+            'tag': tag,
+            'tags': tags,
+        }
+
+        return render(request, self.template_name, context)
+
 
 
 
@@ -104,7 +124,10 @@ class RecipeUpdateView(OwnerUpdateView):
         recipe.save()
         form.save_m2m()
 
+
+
         return redirect(self.success_url)
+
 
 
 

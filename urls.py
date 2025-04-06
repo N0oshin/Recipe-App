@@ -10,5 +10,7 @@ urlpatterns = [
     path('recipe/<int:pk>/update', views.RecipeUpdateView.as_view(success_url=reverse_lazy('recipes:all')), name = 'recipe_update'),
     path('recipe/<int:pk>/delete', views.RecipeDeleteView.as_view(success_url=reverse_lazy('recipes:all')), name = 'recipe_delete'),
 
+
+
 ]
 

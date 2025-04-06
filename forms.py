@@ -11,9 +11,11 @@ class CreateForm(forms.ModelForm):
     picture = forms.FileField(required=False, label='File to Upload <= '+max_upload_limit_text)
     upload_field_name = 'picture'
 
+
+
     class Meta:
         model = Recipe
-        fields = ['title', 'ingredients', 'method', 'picture']
+        fields = ['title', 'ingredients', 'method', 'picture','tags']
 
     # Validate the size of the picture
     def clean(self):
@@ -23,6 +25,10 @@ class CreateForm(forms.ModelForm):
             return
         if len(pic) > self.max_upload_limit:
             self.add_error('picture', "File must be < "+self.max_upload_limit_text+" bytes")
+
+
+
+
 
     # Convert uploaded File object to a picture
     def save(self, commit=True):

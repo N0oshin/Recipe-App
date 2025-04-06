@@ -75,5 +75,41 @@ body {
     color: #205781;
 }
 
+.dropdown_button{
+    background-color:#BED7DC;
+    border: none;
+    color: #205781;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.dropdown_button:hover {
+    background-color: #A5C9D1; /* Slightly darker on hover */
+}
+  /*  <div class="search-container" style="display: flex;">*/
+  /*    <input class="search_input" type="text" name="q" placeholder="Search recipe..." value="{{ query }}" style="flex: 1; padding: 6px;">*/
+  /*    <button type="submit" class="search_button" style="margin-left: 5px;">Search</button>*/
+  /*  </div>*/
+  /*</form>*/
+
+  /*<div class="dropdown" style="margin-left: 1rem;">*/
+  /*  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">*/
+  /*    Browse by collection*/
+  /*  </button>*/
+  /*  <ul class="dropdown-menu dropdown-menu-end">*/
+  /*    {% for tag_item in tags %}*/
+  /*      <li>*/
+  /*        <a class="dropdown-item" href="?tag={{ tag_item.slug }}{% if query %}&q={{ query }}{% endif %}">*/
+  /*          {{ tag_item.name }}*/
+  /*        </a>*/
+  /*      </li>*/
+  /*    {% endfor %}*/
+  /*  </ul>*/
+  /*</div>*/
+
+</div>
 
 
