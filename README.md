@@ -6,7 +6,8 @@ Welcome to the Recipe App! This web application allows users to explore a variet
 
 - Browse through a list of recipes
 - Search for your recipes 
-- View detailed instructions and ingredients for each recipe 
+- View detailed instructions and ingredients for each recipe
+- Browse by collection(eg:snacks, spicy, sweet etc.)
 
 ## Web App
 
