@@ -17,4 +17,6 @@ You can view the deployed web app [here](https://nooshin.pythonanywhere.com/reci
 1. login page
 ![Screenshot (13)](https://github.com/user-attachments/assets/4b724974-a9f0-4bd5-880e-7466b0cf55c4)
 
-2.![Screenshot (14)](https://github.com/user-attachments/assets/07bba0d2-feae-4c73-b21e-7b4a7af434dd)
+2. Landing page for logged in users
+![Screenshot (14)](https://github.com/user-attachments/assets/86ecc9c3-58d8-4794-bda7-3b40326050d1)
+
