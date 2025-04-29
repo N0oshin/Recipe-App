@@ -20,3 +20,5 @@ You can view the deployed web app [here](https://nooshin.pythonanywhere.com/reci
 2. Landing page for logged in users
 ![Screenshot (14)](https://github.com/user-attachments/assets/86ecc9c3-58d8-4794-bda7-3b40326050d1)
 
+3. Detailed recipe
+![Screenshot (12)](https://github.com/user-attachments/assets/0e8c6f4b-f164-479f-b57b-9f476b11b227)
