@@ -26,12 +26,24 @@ body {
     position: relative;
     border-radius: 20px;
     overflow: hidden; /* Ensures images don’t overflow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .card-img-top {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
 }
 
 .search-container{
@@ -71,6 +83,8 @@ body {
     border: none;
     color: #205781;
 }
+
+
 
 .dropdown{
     width: 200px;
